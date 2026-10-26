@@ -52,15 +52,15 @@
   }
 }
 
+
+
 #root {
- 
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
+  height: 100%;
   flex-direction: column;
   box-sizing: border-box;
 }
-
-

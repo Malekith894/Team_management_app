@@ -1,5 +1,5 @@
 import { Children } from "react"
-import Layout from "../components/navbar"
+import Layout from "../pages/Layout"
 import { createBrowserRouter } from "react-router-dom"
 import Signup from "../pages/signup"
 
