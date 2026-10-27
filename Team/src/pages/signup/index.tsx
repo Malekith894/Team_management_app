@@ -3,6 +3,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./sign.module.css";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Authcontext } from "../../context/auth";
+
 
 type submition={
     email?:string;
@@ -13,6 +16,9 @@ type submition={
 
 function Signup(){
     
+    const {auth,setauth}=useContext(Authcontext);
+
+
     const schema=yup.object({
         name:yup.string().required(),
         email:yup.string().email(),
@@ -25,7 +31,7 @@ function Signup(){
 
     function onsubmit(values:submition){
         console.log(values)
-        console.log({values,errors})
+        setauth(true)
         navigate('/')
     }
 
