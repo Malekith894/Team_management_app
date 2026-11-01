@@ -2,7 +2,7 @@ import { Children } from "react"
 import Layout from "../pages/Layout"
 import { createBrowserRouter } from "react-router-dom"
 import Signup from "../pages/signup"
-
+import Userinfo from "../pages/userinfo";
 
 
 const routes=createBrowserRouter([
@@ -13,6 +13,10 @@ const routes=createBrowserRouter([
             {
                 path:'/signup',
                 element:<Signup/>,
+            },
+            {
+                path:'/userinfo',
+                element:<Userinfo/>,
             }
         ]
     }

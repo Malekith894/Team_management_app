@@ -1,26 +1,31 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import styles from "./sign.module.css";
+import styles from "./sign.module.css"
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Authcontext } from "../../context/auth";
-
+import { useDispatch } from "react-redux";
+import { useractions } from "../../redux/slices/userslices";
 
 type submition={
     email?:string;
     name:string;
     phone_number:string;
     role:string;
+    place_of_birth:string;
+    age:string;
 }
 
 function Signup(){
     
-    const {auth,setauth}=useContext(Authcontext);
-
+    const {setauth}=useContext(Authcontext);
+    const dispatch=useDispatch()
 
     const schema=yup.object({
         name:yup.string().required(),
+        place_of_birth:yup.string().required(),
+        age:yup.string().required(),
         email:yup.string().email(),
         phone_number:yup.string().required().min(11),
         role:yup.string().required()
@@ -32,6 +37,8 @@ function Signup(){
     function onsubmit(values:submition){
         console.log(values)
         setauth(true)
+        dispatch(useractions.setuserinfo(values))
+        
         navigate('/')
     }
 
@@ -42,22 +49,32 @@ function Signup(){
                 <h1>Welcome to TEAMS</h1>
                     <div className="flex flex-col mt-2 ">
                         <label htmlFor="name" className="flex items-start">Full Name</label>
-                        <input id="name" className="border rounded-sm" {...register("name")}/>
+                        <input id="name" className="border rounded-sm p-0.5" {...register("name")}/>
                         <span className="block h-5 overflow-hidden text-red-600 text-sm leading-5">{errors.name?.message}</span>
                     </div>
                     <div className="flex flex-col ">
+                        <label htmlFor="place_of_birth" className="flex items-start">Place of birth</label>
+                        <input id="place_of_birth" className="border rounded-sm p-0.5" {...register("place_of_birth")}/>
+                        <span className="block h-5 overflow-hidden text-red-600 text-sm leading-5">{errors.place_of_birth?.message}</span>
+                    </div>
+                    <div className="flex flex-col ">
+                        <label htmlFor="age" className="flex items-start">Age</label>
+                        <input id="age" className="border rounded-sm p-0.5" {...register("age")}/>
+                        <span className="block h-5 overflow-hidden text-red-600 text-sm leading-5">{errors.place_of_birth?.message}</span>
+                    </div>
+                    <div className="flex flex-col ">
                         <label htmlFor="email" className="flex items-start">Email</label>
-                        <input id="email" placeholder="ar@gmail.com" {...register("email")} className="border rounded-[4px]"/>
+                        <input id="email" placeholder="ar@gmail.com p-0.5" {...register("email")} className="border rounded-[4px]"/>
                         
                     </div>
                     <div className="flex flex-col mt-6">
                         <label htmlFor="phone_number" className="flex items-start">Mobile number</label>
-                        <input id="phone_number" placeholder="+98912" {...register("phone_number")} className="border rounded-[4px]"/>
+                        <input id="phone_number" placeholder="+98912" {...register("phone_number")} className="border rounded-[4px] p-0.5"/>
                         <span className="block h-5 overflow-hidden text-red-600 text-sm leading-5">{errors.phone_number?.message}</span>
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="role" className="flex items-start">Team role</label>
-                        <input id="role" className="border rounded-[4px]" {...register("role")}/>
+                        <input id="role" className="border rounded-[4px] p-0.5" {...register("role")}/>
                         <span className="block h-5 overflow-hidden text-red-600 text-sm leading-5">{errors.role?.message}</span>
                     </div>
                     <div className="flex justify-center items-end-safe">

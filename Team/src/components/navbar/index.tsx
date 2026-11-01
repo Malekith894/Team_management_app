@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Authcontext } from "../../context/auth";
 import { useContext } from "react";
 import { FiUser } from "react-icons/fi";
+import { ImHome } from "react-icons/im";
 
 
 function Navbar(){
@@ -14,16 +15,18 @@ function Navbar(){
             <div className="text-xl">
                 ⚜Teams⚜
             </div>
-            <div className="flex flex-row gap-8">
-                <p>Mmebers</p>
-                <p>Projects</p>
-                <p>Tasks</p>
-            </div>
+            { auth==true ?
+                <div className="flex flex-row gap-8">
+                    <p>Mmebers</p>
+                    <p>Projects</p>
+                    <p>Tasks</p>
+                </div> : null
+            }
             <div className="flex flex-row gap-4">
                 <Link to='/'>
-                    <p>Home</p>
+                    <ImHome size={25}/>
                 </Link>
-                {auth==true ? <FiUser size={25}/> :<Link to='/signup'> <p>Sign up</p> </Link>}
+                {auth==true ? <Link to='/userinfo'> <FiUser size={25}/> </Link> :<Link to='/signup'> <p>Sign up</p> </Link>}
                     
             </div>
         </div>

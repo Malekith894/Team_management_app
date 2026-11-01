@@ -1,0 +1,11 @@
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    padding:8px;
+    width:700px;
+    height:430px;
+    border-radius: 6px;
+    border: 2px solid gray;
+    
+}
