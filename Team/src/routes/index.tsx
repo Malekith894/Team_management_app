@@ -3,7 +3,7 @@ import Layout from "../pages/Layout"
 import { createBrowserRouter } from "react-router-dom"
 import Signup from "../pages/signup"
 import Userinfo from "../pages/userinfo";
-
+import Members from "../pages/member_management";
 
 const routes=createBrowserRouter([
     {
@@ -17,6 +17,10 @@ const routes=createBrowserRouter([
             {
                 path:'/userinfo',
                 element:<Userinfo/>,
+            },
+            {
+                path:'/member_management',
+                element:<Members/>
             }
         ]
     }

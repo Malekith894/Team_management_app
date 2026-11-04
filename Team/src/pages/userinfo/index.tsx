@@ -30,7 +30,7 @@ function Userinfo(){
     }
 
     return(
-        <div className="bg-white flex flex-1 min-h-[90vh] items-center justify-center  ">
+        <div className="bg-white flex flex-1 min-h-[94.8vh] items-center justify-center  ">
             <div className={styles.wrapper}>
                 <div className="flex gap-3 flex-col">
                     <div className="flex items-start">

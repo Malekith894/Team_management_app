@@ -1,0 +1,28 @@
+
+
+.wrapper{
+    display: grid;
+    grid-template-areas: 
+    "adding "
+    "members ";
+    grid-template-columns: 1fr;
+    grid-template-rows: 675px auto;
+    width: 100%;
+    min-height: 94.8vh;
+}
+
+
+.content1{
+    grid-area: adding;
+    display: flex ;
+    flex-direction: column;
+    align-items:flex-start;
+    padding: 10px;
+}
+
+.content2{
+    grid-area: members;
+    display: flex;
+    padding: 10px;
+    height: auto;
+}
