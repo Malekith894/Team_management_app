@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router-dom"
 import Signup from "../pages/signup"
 import Userinfo from "../pages/userinfo";
 import Members from "../pages/member_management";
+import Project from "../pages/Projects";
 
 const routes=createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const routes=createBrowserRouter([
             {
                 path:'/member_management',
                 element:<Members/>
+            },
+            {
+                path:'/project',
+                element:<Project/>
             }
         ]
     }

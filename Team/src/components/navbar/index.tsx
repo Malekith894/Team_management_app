@@ -17,9 +17,9 @@ function Navbar(){
             </div>
             { auth==true ?
                 <div className="flex flex-row gap-8">
-                    <Link to='/member_management'><p>Member management</p></Link>
+                    <Link to='/member_management'><p>Members</p></Link>
+                    <Link to='/project'><p>Projects</p></Link>
                     
-                    <p>Projects</p>
                 </div> : null
             }
             <div className="flex flex-row gap-4">
