@@ -4,6 +4,7 @@ import { memberslice } from "./slices/memberslice";
 import { projectslice } from "./slices/projectslice";
 
 
+
 export const store=configureStore({
     reducer:{
         user:userslice.reducer,
@@ -11,3 +12,6 @@ export const store=configureStore({
         project:projectslice.reducer,
     }
 })
+
+
+export type Rootstate=ReturnType<typeof store.getState>

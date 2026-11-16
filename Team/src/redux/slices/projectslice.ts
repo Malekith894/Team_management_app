@@ -4,7 +4,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 interface projectinfo{
         title:string;
         description:string;
-        date:Date;
+        date:string;
     }
 
 

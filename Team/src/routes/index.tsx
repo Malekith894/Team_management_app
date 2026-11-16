@@ -5,6 +5,7 @@ import Signup from "../pages/signup"
 import Userinfo from "../pages/userinfo";
 import Members from "../pages/member_management";
 import Project from "../pages/Projects";
+import Tasks from "../pages/Task";
 
 const routes=createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const routes=createBrowserRouter([
             {
                 path:'/project',
                 element:<Project/>
+            },
+            {
+                path:'/Tasks/:taskid',
+                element:<Tasks/>
             }
         ]
     }

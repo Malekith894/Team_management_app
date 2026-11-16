@@ -4,46 +4,42 @@ import { GoChevronRight } from "react-icons/go";
 import { CiCalendar } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { projectactions } from "../../redux/slices/projectslice";
+import { useNavigate } from "react-router-dom";
+
 
 interface projectinfo{
+    id:string;
     title:string;
     description:string;
-    date:Date;
+    date:string;
 }
 
 
 function Project(){
     
-
+    const navigate=useNavigate()
     const dispatch=useDispatch()
     const [prj,setprj]=useState<projectinfo>(
         {
+            id:'',
             title:'',
-            date: new Date(),
+            date: new Date().toISOString(),
             description:''
         }
     )
     //the complication stems from date item. when storing dates in localstorage,
     // you have to add them again 
-    const [prjllist, setprjlist] = useState<projectinfo[]>(() => {
-    try {
-        const saved = JSON.parse(localStorage.getItem("project") || "[]");
-
-        return saved.map((item: any) => ({
-            ...item,
-            date: new Date(item.date)
-        }));
-    } catch {
-        return [];
-    }
-});
+    const [prjllist, setprjlist] = useState<projectinfo[]>(JSON.parse(localStorage.getItem("project") || "[]"))
 
     //always use useEffect when storing, i used this line in createprj function
     // and it only stored the first item because it was asynchronous
     useEffect(function(){
         localStorage.setItem("project",JSON.stringify(prjllist))
     },[prjllist])
-
+    
+    useEffect(function(){
+        setprj({...prj,id:crypto.randomUUID()})
+    },[prjllist])
 
     function createprj(){
         if(!prj.title || !prj.description ){
@@ -52,12 +48,12 @@ function Project(){
         }else{
             setprjlist([...prjllist,prj])
             setprj({
+                id:'',
                 title:'',
-                date:new Date(),
+                date:new Date().toISOString(),
                 description:''})
             }
             dispatch(projectactions.addproject(prjllist))
-            console.log(prjllist)
     }
 
     return(
@@ -81,7 +77,8 @@ function Project(){
             <div className="flex flex-wrap m-2 gap-4">
                 {prjllist.map(function(item){
                     return(
-                        <div className="bg-blue-50 shadow-lg shadow-red-500/50 flex flex-col rounded-lg w-[300px] h-[180px] justify-between items-start p-1">
+                        
+                        <div key={item.id} className="bg-blue-50 shadow-lg shadow-red-300/50 flex flex-col rounded-lg w-[300px] h-[180px] justify-between items-start p-1">
                             <div className="flex flex-row w-full justify-between p-1">
                                 <div className="flex flex-row gap-2">
                                     <div className="bg-red-50 rounded-[4px] w-[60px] h-[60px] items-justify-center ">
@@ -89,18 +86,22 @@ function Project(){
                                     </div>
                                     <div className="flex flex-col items-start">
                                         <h2>{item.title}</h2>
-                                        <p className="text-sm">{item.description}</p>
+                                        <p className="text-xs">{item.description.trim().split(/\s+/).length > 3
+                                        ? item.description.trim().split(/\s+/).slice(0, 5).join(" ") + "..."
+                                        : item.description}</p>
                                     </div>
                                 </div>
                                 <div className="w-[27px] h-[27px] bg-gray-400 rounded-4xl flex items-center justify-center">
-                                    <GoChevronRight size={25} color="white"/>
+                                    <button onClick={() => navigate(`/Tasks/${item.id}`)}>
+                                            <GoChevronRight size={25} color="white"/>
+                                    </button>
                                 </div>
                             </div>
                             <div className="flex flex-row ">
                                 <CiCalendar size={25}/>
-                                <p>: {item.date.toLocaleDateString("en-us",{
-                                    month:"long",
-                                    year:"numeric",
+                                <p>: {new Date(item.date).toLocaleDateString("en-us",{
+                                    month:'long',
+                                    year:'numeric'
                                 })}</p>
                             </div>
                         </div>

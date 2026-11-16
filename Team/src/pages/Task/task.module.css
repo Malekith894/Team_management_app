@@ -1,0 +1,149 @@
+
+.wrapper{
+    display: grid;
+    grid-template-areas: 
+    "intro"
+    "filter"
+    "addtask"
+    "maincontent"
+    ;
+    grid-template-columns:1fr ;
+    grid-template-rows: auto auto auto auto;
+    background-color: white;
+    min-height:94.8vh;
+}
+
+.intro{
+    grid-area: intro;
+    display: flex ;
+    flex-direction: row;
+}
+.filter{
+    grid-area: filter; 
+}
+
+.taskFormGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+    gap: 16px 32px;
+    padding: 12px;
+}
+
+/* Center each field group within its column */
+.taskFormGrid > div {
+    width: min(100%, 320px);
+    min-width: 0;
+}
+
+/* Inputs fill their field group */
+.taskFormGrid input:not([type="radio"]),
+.taskFormGrid select,
+.taskFormGrid textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.contentbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: start;
+    margin-top: 9px;
+}
+
+.addtaskbox{
+    background-color: #eff6ff;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.dualfilters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.dualname{
+    display: flex ;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 6px;
+}
+
+.introdetails{
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+}
+.filterbox {
+    background-color: #eff6ff;
+    width: 70%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.addtask{
+    grid-area: addtask;
+    padding-top: 8px;
+    
+}
+.maincontent{
+    grid-area: maincontent;
+    
+}
+
+@media (max-width:500px){
+
+.introdetails{
+    gap: 4px;
+    flex-direction: column;
+}   
+
+.taskFormGrid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 8px 0;
+    }
+
+    .taskFormGrid > div {
+        width: 100%;
+    }
+
+.filterbox{
+    height: 530px;
+    width: 80%;
+    background-color: #eff6ff;
+}
+.addtaskbox{
+    
+    width: 300px;
+}
+.dualfilters{
+    flex-direction: column;
+    gap:14px;
+}
+.filter{
+    margin-top: 8px;
+}
+
+.dualname{
+    flex-direction: column;
+    gap:14px;
+}
+
+.contentbox{
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+}
+}
