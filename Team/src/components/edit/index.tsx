@@ -32,16 +32,28 @@ type edittype={
 
 function Editoption({edit,setedit,task,settask,tasklist,settasklist}:edittype){
     const memberlist=useSelector((state:Rootstate) => state.member);
+
+    //4 states for the editing version
+    const[prt,setprt]=useState(task.priority)
+    const[stat,setstat]=useState(task.status)
+    const[mem,setmem]=useState(task.assignee)
+    const[dead,setdead]=useState(task.deadline)
+
     function handlecancel(){
         setedit(false)
     }
     function handlesave(){
-        if(tasklist.includes(task)){
-            settasklist([...tasklist,])
-            
-        }
+        const number=task.id;
+        settasklist(
+        tasklist.map(function(item){
+            if(item.id==number){
+                return {...item,assignee: mem, priority: prt, status: stat, deadline: dead}
+            } else{
+                return item;
+            }
+        }))
+        setedit(false)
     }
-
 
     return(
         <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/25 backdrop-blur-sm">
@@ -51,7 +63,7 @@ function Editoption({edit,setedit,task,settask,tasklist,settasklist}:edittype){
                 <div className={styles.taskFormGrid}>
                     <div className="flex flex-col items-start">
                         <label >Priority</label>
-                        <select>
+                        <select value={prt} onChange={(e)=> setprt(e.target.value)}>
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
                             <option value="high">High</option>
@@ -59,16 +71,16 @@ function Editoption({edit,setedit,task,settask,tasklist,settasklist}:edittype){
                     </div>
                     <div className="flex flex-col items-start">
                         <label>status</label>
-                        <select>
-                            <option value="todo">To do</option>
-                            <option value="done">Done</option>
+                        <select value={stat} onChange={(e)=> setstat(e.target.value)}>
+                            <option value="Todo">To do</option>
+                            <option value="Done">Done</option>
                         </select>
                     </div>
                 </div>
                 <div className={styles.taskFormGrid}>
                     <div className="flex flex-col items-start">
                         <label>Assignee</label>
-                        <select>
+                        <select value={mem} onChange={(e)=>setmem(e.target.value)}>
                             {memberlist.map(function(item: memberinfo) {
                                 return (
                                     <option key={item.id} value={item.name}>
@@ -80,7 +92,7 @@ function Editoption({edit,setedit,task,settask,tasklist,settasklist}:edittype){
                     </div>
                     <div className="flex flex-col items-start">
                         <label>Deadline date</label>
-                        <input type="date"/>
+                        <input value={dead} type="date" onChange={(e)=>setdead(e.target.value)}/>
                     </div>
                 </div>
                 <div className="flex flex-row gap-8 mt-1 justify-center">

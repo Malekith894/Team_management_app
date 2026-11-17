@@ -144,7 +144,6 @@ function Tasks(){
             alert("please fill in the blanks")
         } else{
             settasklist((prev) =>[...prev,{...state,id:Math.random()}])
-            console.log(tasklist)
             
         }
     };
@@ -213,7 +212,7 @@ function Tasks(){
                            <button type="button"
                             onClick={() => setfilteropen(!filteropen)}
                             aria-expanded={filteropen}
-                            aria-controls="add-task-form"
+                            aria-controls="filter-form"
                             className="flex w-full flex-row items-center justify-between text-left">
 
                                 <span className="flex flex-row items-center gap-2">
@@ -334,7 +333,7 @@ function Tasks(){
 </div>
         <div className={styles.addtask}>
             <div className={styles.addtaskbox}>
-                        {/* Clickable header */}
+                        
         <button
             type="button"
             onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}

@@ -95,7 +95,7 @@ function Members(){
                             <p>Assigned duties</p>
                         </div>
                     </div>
-                    <div className="h-[425px] w-full bg-blue-50 mt-3 p-3 rounded-[8px]">
+                    <div className={styles.addmember}>
                         <div className="flex flex-row ">
                             <BiSolidUserPlus size={25}/>
                             <p> Add a new member</p>
@@ -104,18 +104,18 @@ function Members(){
                         <div className="flex flex-col gap-3 mt-3">
                             <div className="flex flex-col">
                                 <label className="flex items-start"> Full name</label>
-                                <input className="rounded-[11px] w-[500px] border-1 p-0.5"
+                                <input className="rounded-[11px] w-[95%] border-1 p-0.5"
                                 placeholder="e.g.Ali Ahmadi" onChange={(e) => setmember({...member,name:e.target.value})} value={member.name}/>
                             </div>
                             <div className="flex flex-col">
                                 <label className="flex items-start"> Company role</label>
-                                <input className="rounded-[11px] w-[500px] border-1 p-0.5" 
+                                <input className="rounded-[11px] w-[95%] border-1 p-0.5" 
                                 placeholder="e.g.Frontend" onChange={(e) => setmember({...member,role:e.target.value})} value={member.role}/>
                             </div>
                         </div>
                         <div className=" flex flex-col items-start mt-2">
                             <label>Duty/Responsibilities</label>
-                            <textarea className="rounded-[8px] h-[100px] w-[500px] border p-2 text-sm placeholder:text-sm placeholder:text-gray-400 resize-none"
+                            <textarea className="rounded-[8px] h-[100px] w-[95%] border p-2 text-sm placeholder:text-sm placeholder:text-gray-400 resize-none"
                             placeholder="Describe what this person is responsible for..." onChange={(e) => setmember({...member,duty:e.target.value})} value={member.duty}/>
                         </div>
                         <button className="w-full bg-gray-200 h-[40px] rounded-[9px] mt-3" onClick={handlemember}>+Add team member</button>
@@ -133,7 +133,7 @@ function Members(){
                         </div>
                         {filteredlist.map(function(item){
                             return(
-                                <div key={item.id}>
+                                <div  key={item.id}>
                                     <div className="flex flex-row justify-between">
                                         <div className="flex flex-row gap-2 mt-2">
                                             <div className="w-[60px] h-[60px] bg-blue-100 rounded-4xl flex items-center justify-center">

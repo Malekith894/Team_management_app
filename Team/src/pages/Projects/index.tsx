@@ -74,7 +74,7 @@ function Project(){
                 </div>
             </div>
             { 
-            <div className="flex flex-wrap m-2 gap-4">
+            <div className="flex flex-wrap m-2 justify-center gap-4">
                 {prjllist.map(function(item){
                     return(
                         
