@@ -6,6 +6,8 @@ import Userinfo from "../pages/userinfo";
 import Members from "../pages/member_management";
 import Project from "../pages/Projects";
 import Tasks from "../pages/Task";
+import Home from "../pages/home";
+
 
 const routes=createBrowserRouter([
     {
@@ -31,6 +33,10 @@ const routes=createBrowserRouter([
             {
                 path:'/Tasks/:taskid',
                 element:<Tasks/>
+            },
+            {
+                path:'/',
+                element:<Home/>
             }
         ]
     }

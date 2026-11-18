@@ -50,12 +50,8 @@ function Members(){
         })
     }
 
-    function handleremove(number:number){
-        setmemberlist(memberlist.filter(function(item){
-            return item.id!=number;
-        }))
-        dispatch(memberactions.removemember(number))
-    }
+    
+
     const [crole,setcrole]=useState('')
 
     const filteredlist=memberlist.filter(function(item){
@@ -118,7 +114,7 @@ function Members(){
                             <textarea className="rounded-[8px] h-[100px] w-[95%] border p-2 text-sm placeholder:text-sm placeholder:text-gray-400 resize-none"
                             placeholder="Describe what this person is responsible for..." onChange={(e) => setmember({...member,duty:e.target.value})} value={member.duty}/>
                         </div>
-                        <button className="w-full bg-gray-200 h-[40px] rounded-[9px] mt-3" onClick={handlemember}>+Add team member</button>
+                        <button className="w-full bg-blue-400 h-[40px] rounded-[9px] mt-3" onClick={handlemember}>+Add team member</button>
                     </div>
                 </div>
                 <div className={styles.content2}>
@@ -144,9 +140,7 @@ function Members(){
                                                 <p className="text-xs">{item.role}</p>
                                             </div>
                                         </div>
-                                        <div className="mt-2 pr-2">
-                                            <button onClick={() => handleremove(item.id)}><LiaTrashAlt size={25} color="red"/></button>
-                                        </div>
+                                        
                                     </div>
                                     <div className="flex flex-col items-start mt-1">
                                         <p className="font-bold">Reponsibilites</p>

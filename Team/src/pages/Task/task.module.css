@@ -57,7 +57,7 @@
     background-color: #eff6ff;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -84,8 +84,8 @@
 }
 .filterbox {
     background-color: #eff6ff;
-    width: 70%;
-    max-width: 1000px;
+    width: 95%;
+  
     margin: 0 auto;
     padding: 16px;
     border-radius: 10px;
@@ -119,13 +119,12 @@
     }
 
 .filterbox{
-    
-    width: 80%;
+    width: 95%;
     background-color: #eff6ff;
 }
 .addtaskbox{
     
-    width: 300px;
+    width: 95%;
 }
 .dualfilters{
     flex-direction: column;

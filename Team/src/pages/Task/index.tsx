@@ -12,6 +12,8 @@ import Editoption from "../../components/edit";
 import type { Rootstate } from "../../redux/index";
 import { FaFilter } from "react-icons/fa";
 
+
+
 type projectinfo={
     id:string;
     title:string;
@@ -64,7 +66,7 @@ const reducer=(state:taskinfo,action:actiontype) =>{
         case "description":{
             return{
                 ...state,
-                description:action.payload
+                description:action.payload,
             }
         }
         case "assignee":{
@@ -133,11 +135,9 @@ function Tasks(){
     const [editedtask,seteditedtask]=useState({});
 
     //task logic
-    const [tasklist,settasklist]=useState<taskinfo[]>([]);
+    const [tasklist,settasklist]=useState<taskinfo[]>(JSON.parse(localStorage.getItem(`task${taskid}`) || "[]"));
     
-    useEffect(function(){
-        localStorage.setItem("tasklist",JSON.stringify(tasklist))
-    },[tasklist])
+    
 
     function handletask(){
         if(!state.status || state.assignee=="select" || !state.priority || !state.deadline || !state.title || !state.description){
@@ -178,6 +178,10 @@ function Tasks(){
     
 });
 
+    useEffect(function(){
+        localStorage.setItem(`task${taskid}`,JSON.stringify(tasklist))
+    },[tasklist])
+
 
     return(
         <div className={styles.wrapper}>
@@ -195,7 +199,8 @@ function Tasks(){
                             <p> Due: {new Date(project.date).toLocaleDateString("en-us",{
                                 month:"long",
                                 day:"2-digit",
-                            })}</p>
+                            })}
+                            </p>
                         </div>
                         <div className="flex flex-row">
                             <FiUsers color="blue" size={20} />
@@ -222,9 +227,7 @@ function Tasks(){
 
                             <FiChevronDown
                                 size={20}
-                                className={`transition-transform duration-300 ${
-                                    filteropen ? "rotate-180" : ""
-                                }`}
+                                
                             />
 
                             </button> 
@@ -348,9 +351,7 @@ function Tasks(){
 
             <FiChevronDown
                 size={20}
-                className={`transition-transform duration-300 ${
-                    isAddTaskOpen ? "rotate-180" : ""
-                }`}
+                
             />
         </button>
 
@@ -444,7 +445,7 @@ function Tasks(){
                                 <div className="w-[360px] h-[50px] bg-red-400 rounded-t-xl p-1">
                                     <div className="flex flex-row justify-between ">
                                         <div className="flex flex-row gap-0.5">
-                                            <p className="font-bold">To Do</p>
+                                            <p className="font-bold">In Progress</p>
                                             <div className="bg-blue-200 mt-1 flex items-center justify-center rounded-4xl w-[20px] h-[20px]">
                                                 {filtprogressprjs.length}
                                             </div>
