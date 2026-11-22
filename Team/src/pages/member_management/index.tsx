@@ -144,7 +144,7 @@ function Members(){
                                     </div>
                                     <div className="flex flex-col items-start mt-1">
                                         <p className="font-bold">Reponsibilites</p>
-                                        <p className="text-xs">{item.duty}</p>
+                                        <p className="text-xs text-justify">{item.duty}</p>
                                     </div>
                                     <div className="w-full h-[2px] bg-gray-300 mt-2">
 

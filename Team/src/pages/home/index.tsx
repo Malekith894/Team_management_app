@@ -16,7 +16,7 @@ type projectinfo = {
 
 function Home() {
     const projectlist = useSelector(
-        (state: Rootstate) => state.project
+        (state: Rootstate) => state.project || []
     );
 
     const projectScrollRef = useRef<HTMLDivElement>(null);
@@ -82,7 +82,7 @@ function Home() {
                                                 {item.title}
                                             </p>
 
-                                            <p className="truncate max-w-full">
+                                            <p className="truncate max-w-full text-justify">
                                                 {item.description.trim().split(/\s+/).length > 3
                                                 ? item.description.trim().split(/\s+/).slice(0, 3).join(" ") + "..."
                                                 : item.description}

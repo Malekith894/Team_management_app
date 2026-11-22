@@ -93,7 +93,6 @@ function Tasks(){
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
     const [filteropen,setfilteropen]= useState(false);
     const first_member=memberlist[0];
-
     const [openSection, setOpenSection] = useState<string | null>("status");
     const [state,dispatch]=useReducer(reducer,{
         status:"Todo",
@@ -120,8 +119,8 @@ function Tasks(){
     }
     
 
-
-    const project:projectinfo=projectlist.find(function(item:projectinfo){
+    
+    const project:projectinfo=projectlist?.find(function(item:projectinfo){
         return item.id==taskid;
     })
     
@@ -214,32 +213,7 @@ function Tasks(){
             <div className={styles.filter}>
                 <div className={styles.filterbox}>
                     <div className="flex flex-col">
-                           <button type="button"
-                            onClick={() => setfilteropen(!filteropen)}
-                            aria-expanded={filteropen}
-                            aria-controls="filter-form"
-                            className="flex w-full flex-row items-center justify-between text-left">
-
-                                <span className="flex flex-row items-center gap-2">
-                                <FaFilter size={25} color="blue" />
-                                <span className="font-semibold">Filtering</span>
-                            </span>
-
-                            <FiChevronDown
-                                size={20}
-                                
-                            />
-
-                            </button> 
-                            <div
-                                id="filter-form"
-                                className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
-                                    filteropen
-                                        ? "grid-rows-[1fr]"
-                                        : "grid-rows-[0fr]"
-                                }`}
-                            >
-    <div className="min-h-0 overflow-hidden">
+                           
 
         <div className="flex flex-col gap-3 pt-4">
 
@@ -329,8 +303,8 @@ function Tasks(){
 
         </div>
 
-    </div>
-</div>
+    
+
 </div>
 </div>
 </div>

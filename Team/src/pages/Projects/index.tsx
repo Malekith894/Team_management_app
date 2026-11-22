@@ -37,23 +37,26 @@ function Project(){
         localStorage.setItem("project",JSON.stringify(prjllist))
     },[prjllist])
     
-    useEffect(function(){
-        setprj({...prj,id:crypto.randomUUID()})
-    },[prjllist])
 
     function createprj(){
         if(!prj.title || !prj.description ){
             alert("please fill in the blanks")
             return;
-        }else{
-            setprjlist([...prjllist,prj])
+        }
+
+        const newproject = { ...prj, id: crypto.randomUUID() };
+        const newlist = [...prjllist, newproject];
+
+        setprjlist(newlist);
+        dispatch(projectactions.addproject(newlist));
+            
             setprj({
                 id:'',
                 title:'',
                 date:new Date().toISOString(),
                 description:''})
-            }
-            dispatch(projectactions.addproject(prjllist))
+            
+            
     }
 
     return(

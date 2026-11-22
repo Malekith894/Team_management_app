@@ -12,7 +12,7 @@ interface userinfo{
 
 export const userslice=createSlice({
     name:"user",
-    initialState: JSON.parse(localStorage.getItem("Userinfo") || "null"),
+    initialState: JSON.parse(localStorage.getItem("Userinfo") || "[]"),
     reducers:{
         setuserinfo(state,action:PayloadAction<userinfo>){
             localStorage.setItem("Userinfo",JSON.stringify(action.payload))
