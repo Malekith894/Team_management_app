@@ -65,10 +65,10 @@ npm run dev
 
 Application data is stored in the browser's LocalStorage, allowing data to persist between page refreshes in the same browser.
 
-## 🎯 Project Purpose
+## 🎯 Project Technical vision
 
-The main goal of this project was to build a practical team management application while applying modern React development concepts, including component-based architecture, global state management, reusable components, and responsive UI development.
-
+The main goal of this project was to build a practical team management application. Yup was used alongside react hook form to display the specific Erros during signup. if the user does not sign up, he/she 
+cannot access other parts of the application. Additionally, context Api was used for authentication of the user. In styling, CSS module and grid were used for perimeter boxes, it allows me to make the application responsive in fewer lines of code. Each project has a specific id that is shown in its URL when adding tasks for the project. each task can be either removed or edited. when clicking edit, a modal message is displayed.   
 ---
 
 **Developed by Arshia Karimi**
