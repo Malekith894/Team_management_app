@@ -87,6 +87,7 @@ const reducer=(state:taskinfo,action:actiontype) =>{
 
 
 function Tasks(){
+
     const {taskid}=useParams()
     const projectlist=useSelector((state:Rootstate) => state.project);
     const memberlist=useSelector((state:Rootstate) => state.member);
@@ -305,9 +306,9 @@ function Tasks(){
 
     
 
-</div>
-</div>
-</div>
+        </div>
+        </div>
+        </div>
         <div className={styles.addtask}>
             <div className={styles.addtaskbox}>
                         
@@ -408,7 +409,7 @@ function Tasks(){
                     </div>
 
                 </div>
-            <button onClick={handletask} className="h-[40px] rounded-xl bg-blue-200 w-full">+Add new task</button>
+            <button onClick={handletask} className="h-[40px] rounded-xl bg-blue-400 w-full">+Add new task</button>
             </div>
         </div>
                     </div>
@@ -436,8 +437,8 @@ function Tasks(){
                                                     <div className="flex flex-row justify-between">
                                                         <div className="flex flex-col gap-1 items-start">
                                                             <p className="font-bold">{item.title}</p>
-                                                            {item.description.trim().split(/\s+/).length > 5
-                                                            ? item.description.trim().split(/\s+/).slice(0, 5).join(" ") + "..."
+                                                            {item.description.trim().split(/\s+/).length > 4
+                                                            ? item.description.trim().split(/\s+/).slice(0, 4).join(" ") + "..."
                                                             : item.description}
                                                         </div>
                                                         <div>

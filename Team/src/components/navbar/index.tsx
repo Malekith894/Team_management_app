@@ -19,7 +19,6 @@ function Navbar(){
                 <div className="flex flex-row gap-8">
                     <Link to='/member_management'><p>Members</p></Link>
                     <Link to='/project'><p>Projects</p></Link>
-                    
                 </div> : null
             }
             <div className="flex flex-row gap-4">

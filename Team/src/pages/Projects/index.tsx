@@ -23,7 +23,7 @@ function Project(){
         {
             id:'',
             title:'',
-            date: new Date().toISOString(),
+            date: '',
             description:''
         }
     )
@@ -39,7 +39,7 @@ function Project(){
     
 
     function createprj(){
-        if(!prj.title || !prj.description ){
+        if(!prj.title || !prj.description || !prj.date){
             alert("please fill in the blanks")
             return;
         }
@@ -49,13 +49,11 @@ function Project(){
 
         setprjlist(newlist);
         dispatch(projectactions.addproject(newlist));
-            
             setprj({
                 id:'',
                 title:'',
-                date:new Date().toISOString(),
+                date:'',
                 description:''})
-            
             
     }
 
@@ -66,10 +64,16 @@ function Project(){
                     <CgAdd size={25} color="blue"/>
                     <p>Create new project</p>
                 </div>
-                <div className="flex items-start mt-2">
+                <div className="flex items-start mt-2 flex-col">
+                    <label>Project title</label>
                     <input className="border rounded-[8px] w-1/3 p-0.5" placeholder="Project title" value={prj.title} onChange={(e) => {setprj({...prj,title:e.target.value})}}/>
                 </div>
-                <div className="flex items-start mt-2">
+                <div className="flex items-start mt-2 flex-col">
+                    <label>Project Deadline</label>
+                    <input type="date" className="border rounded-[8px] w-1/3 p-0.5"  value={prj.date} onChange={(e) => {setprj({...prj,date:e.target.value})}}/>
+                </div>
+                <div className="flex items-start mt-2 flex-col">
+                    <label>Project description</label>
                     <textarea onChange={(e) => {setprj({...prj,description:e.target.value})}} className=" border rounded-[8px] p-0.5 w-3/4 h-[130px]" placeholder="Describe what the project is..." value={prj.description}/>
                 </div>
                 <div className="mt-2 ">
@@ -104,7 +108,8 @@ function Project(){
                                 <CiCalendar size={25}/>
                                 <p>: {new Date(item.date).toLocaleDateString("en-us",{
                                     month:'long',
-                                    year:'numeric'
+                                    
+                                    day:'2-digit',
                                 })}</p>
                             </div>
                         </div>

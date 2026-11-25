@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import Pic1 from "./../../assets/Pic1.png";
 import type { Rootstate } from "./../../redux/index";
@@ -27,6 +27,23 @@ function Home() {
             behavior: "smooth"
         });
     };
+    
+    useEffect(function(){
+
+    const today=new Date()
+
+    projectlist.forEach(function(project){
+           const deadline=new Date(project.date)
+           
+           if(
+            deadline.getDate() == today.getDate() &&
+            deadline.getMonth() === today.getMonth() &&
+            deadline.getFullYear() === today.getFullYear()
+           ){
+            alert("Today is the deadline! Please hurry up!");
+           }
+        })
+    },[projectlist])
 
     return (
         <div>
@@ -90,14 +107,10 @@ function Home() {
                                         </div>
                                     </div>
 
-                                    <div className="h-[28px] w-[28px] shrink-0
-                                    flex items-center justify-center
-                                    bg-gray-100 rounded-full">
-                                        <FiChevronRight size={25} />
-                                    </div>
+                                    
                                 </div>
 
-                                {/* Date stays at the bottom */}
+                                
                                 <div className="mt-auto flex items-center">
                                     <CiCalendarDate size={25} />
 
